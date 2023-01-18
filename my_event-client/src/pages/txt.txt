@@ -1,0 +1,97 @@
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import axios from 'axios'
+
+import FetchEvents from '../components/FetchEvents'
+import Navbar from '../components/Navbar';
+import Search from '../components/Search';
+import '../styles/homePage.css'
+
+function HomePage() {
+  const [events, setEvents] = useState([]);
+  const [displayPerPage, setDisplayPerPage ] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const numOfPages = Math.ceil(events.length / displayPerPage);
+  const pages = [...Array(numOfPages + 1).keys()].slice(1);
+  const indexOfLastEvent = currentPage * displayPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - displayPerPage;
+
+  const visibleEvent = events.slice(indexOfFirstEvent, indexOfLastEvent);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "https://public.opendatasoft.com//api/records/1.0/search/?dataset=evenements-publics-openagenda&q=&rows=100&start=10",
+      headers: { "content-type": "application/json" },
+    }).then((res) => {
+        console.log(res.data["records"])
+        setEvents(res.data["records"]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return;
+  }, []);
+
+  const prevHandler = () => {
+    if (currentPage !== 1 ) setCurrentPage(currentPage - 1);
+  }
+
+  const nextHandler = () => {
+    if (currentPage !== numOfPages ) setCurrentPage(currentPage + 1);
+  }
+
+  if (!events) return <div>Nothing to see here!</div>;
+  return (
+    <div className='container'>   
+
+      <div className='fetch_container'>
+        <h2>Evenement disponible</h2>
+        <div className='events-grid'>
+          {visibleEvent.map((data) => (
+            <div key={data.recordid} className='card'>
+              <div className='card_contents'>
+                <h3>{data.fields.title_fr}</h3>
+                <p>{data.fields.description_fr}</p>
+                <div className='card_content_footer'>
+                  <h4>{data.fields.daterange_fr}</h4>
+                  <div className='event_infos'>
+                    <div>
+                      <h4>Ville: {data.fields.location_city}</h4>
+                      <h4>Region: {data.fields.location_region}</h4>
+                      <h4>Pays : {data.fields.country_fr}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <Link to={'event/:recordid'}>
+              <img src={data.fields.image} alt="" />
+            </Link>            
+          </div>
+        ))}
+
+      </div>
+        <div className='pagination'>
+          <span onClick={prevHandler}>
+            <img src="https://img.icons8.com/external-zen-filled-royyan-wijaya/24/FFFFFF/external-so-chevrons-left-arrow-zen-filled-royyan-wijaya.png" height={20}/>
+          </span>
+            {pages.map(page => 
+              <span key={page} 
+                onClick={() => setCurrentPage(page)}
+                className={`${currentPage === page ? 'active' : ''}`}
+              >
+                {`${page} `}
+            </span>)}
+          <span onClick={nextHandler}>
+          <img src="https://img.icons8.com/external-zen-filled-royyan-wijaya/24/FFFFFF/external-so-chevrons-right-arrow-zen-filled-royyan-wijaya.png" height={20}/>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+  )
+}
+
+export default HomePage
+

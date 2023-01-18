@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import FetchEvents from '../components/FetchEvents'
 
 function HomePage() {
+
   return (
-    <div>HomePage</div>
+    <div className='container'>   
+      <FetchEvents />
+
+    </div>
+    
   )
 }
 
