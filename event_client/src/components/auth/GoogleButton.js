@@ -26,7 +26,7 @@ function GoogleButton() {
     });
   }, []);
   return (
-    <div>
+    <>
       <div id="signInDiv"></div>
       {/* {user && 
         <div>
@@ -34,7 +34,7 @@ function GoogleButton() {
           <h3>{user.given_name}</h3>
         </div>
       } */}
-    </div>
+    </>
   );
 }
 
