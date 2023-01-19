@@ -45,21 +45,21 @@ function FetchEvents() {
     if (currentPage !== numOfPages ) setCurrentPage(currentPage + 1);
   }
 
-  // const [value, setValue] = useState('');
-  // const handlSearch = async (e) => {
-  //   e.preventDefault();
-  //   return await axios({
-  //     method: "GET",
-  //     url: `https://public.opendatasoft.com//api/records/1.0/search/?dataset=evenements-publics-openagenda&q=${value}=&rows=100&start=10`,
-  //     headers: { "content-type": "application/json" },
-  //   }).then((res) => {
-  //     setEvents(res.data["records"]);
-  //     setValue('')
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  // }
+  const [value, setValue] = useState('');
+  const handlSearch = async (e) => {
+    e.preventDefault();
+    return await axios({
+      method: "GET",
+      url: `https://public.opendatasoft.com//api/records/1.0/search/?dataset=evenements-publics-openagenda&q=${value}=&rows=100&start=10`,
+      headers: { "content-type": "application/json" },
+    }).then((res) => {
+      setEvents(res.data["records"]);
+      setValue('')
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 
   if (!events) return <div>Nothing to see here!</div>;
 
