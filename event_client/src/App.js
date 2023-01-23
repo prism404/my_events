@@ -6,8 +6,6 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import ProfilPage from "./pages/ProfilPage";
-// import SortiePage from "./pages/SortiePage";
-import Outings from "./pages/Outings";
 
 // Login
 // import LoginWithFirebase from "./components/auth/login";
@@ -31,7 +29,6 @@ function App() {
               </Protected>
             }
           />
-          <Route path="/organize" element={<Outings />} />
         </Routes>
       </AuthContextProvider>
     </div>

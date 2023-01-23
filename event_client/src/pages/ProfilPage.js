@@ -11,7 +11,7 @@ function ProfilPage() {
       <div className="profil_container">
         <div className="avatar_container">
           <img
-            src="/img/avatar_01.webp"
+            src={user.photoURL}
             alt="default avatar"
             className="avatar"
           />

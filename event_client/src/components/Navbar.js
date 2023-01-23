@@ -24,15 +24,12 @@ function Navbar() {
           <Link to="/profil" className="link right_content_link">
             <h4>Profil</h4>
           </Link>
-          |
-          <Link to="/organize" className="link right_content_link">
-            <h4>Outings</h4>
-          </Link>
+          | 
           {user?.displayName ? (
             <button className="logout_btn" onClick={handleSignOut}>| Logout
             </button>
           ) : (
-            <Link to="/login">| Login</Link>
+            <Link to="/login"> Login </Link>
           )}
         </div>
       </div>
