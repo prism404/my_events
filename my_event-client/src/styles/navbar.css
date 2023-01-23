@@ -21,17 +21,6 @@
         color: white;
     }
     
-    .navbar .navbar_right_content {
-        display: flex;
-        padding: 8px .5rem;
-        border-radius: 50px;
-        border: 2px solid white;
-    }
-    
-    .right_content_link {
-        margin: 0 10px;
-    }
-    
     .navbar button {
         border: none;
         margin: 0 10px;
@@ -39,9 +28,6 @@
         background-color: transparent;
     }
 
-    .hamburger{
-        display: none;
-    }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 959px){
@@ -64,17 +50,6 @@
     .link {
         text-decoration: none;
         color: white;
-    }
-    
-    .navbar .navbar_right_content {
-        display: flex;
-        padding: 8px .5rem;
-        border-radius: 50px;
-        border: 2px solid white;
-    }
-    
-    .right_content_link {
-        margin: 0 10px;
     }
     
     .navbar button {
