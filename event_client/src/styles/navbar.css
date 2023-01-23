@@ -6,6 +6,7 @@
         left: 0;
         position: fixed;
         background-color: black;
+        color: white;
     }
     
     .navbar .navbar_container {
@@ -39,8 +40,14 @@
         background-color: transparent;
     }
 
-    .hamburger{
+    .hamburger {
         display: none;
+    }
+
+    .logout_btn,
+    .login_btn {
+        outline: none;
+        color: white;
     }
 }
 

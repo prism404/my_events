@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/login.css";
-import GoogleButton from "./GoogleButton";
+import { GoogleButton } from "react-google-button";
+import { UserAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const { googleSignIn, user } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (user != null) {
+      navigate("/profil");
+    }
+  }, [user]);
+
   return (
     <div className="login_container">
       <video autoPlay muted loop id="retro_tv" alt="retro tv">
@@ -12,15 +31,9 @@ function Login() {
         <div className="inputs">
           <h2 className="title">Login</h2>
           <div className="logform">
-            <input type="text" id="input_email" placeholder="Email" />
-            <input type="password" id="input_password" placeholder="Password" />
-            <br />
-            <br />
-            <div>
-              <button className="logbtn effect">Log in</button>
+          <div id="google_icon">
+              <GoogleButton onClick={handleGoogleSignIn} />
             </div>
-            <br />
-            <GoogleButton />
           </div>
         </div>
       </div>

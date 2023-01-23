@@ -1,0 +1,72 @@
+h3 {
+    margin-bottom: 1.6rem;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.main_profil {
+    display: flex;
+    flex-direction: column;
+}
+
+.profil_container {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    color: white;
+    display: flex;
+    width: 100%;
+    max-width: 75%;
+    height: 300px;
+    max-height: 100%;
+}
+
+.avatar_container {
+    width: 20%;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.about_me {
+    display: flex;
+    padding-bottom: 1rem;
+}
+
+#edit_icon {
+    height: 30px;
+    width: 30px;
+    margin-left: 0.4rem;
+}
+
+.flagrant {
+    margin: 1rem 3rem;
+}
+
+.informations_container {
+    width: 100%;
+}
+
+.outings_container {
+    width: 950px;
+    height: 100%;
+    background-color: rgb(68, 68, 68);
+    position: absolute;
+    top: 60%;
+    left: 15%;
+}
+
+.outing_element {
+    margin: 1rem;
+    padding: 2rem;
+    background-color: white;
+    color: black;
+}
+
+#title_list {
+    margin: 1.6rem;
+}

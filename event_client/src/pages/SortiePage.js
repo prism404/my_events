@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 function SortiePage() {
   return (
-    <div>SortiePage</div>
+    <div className='outing_container'>
+
+    </div>
   )
 }
 
