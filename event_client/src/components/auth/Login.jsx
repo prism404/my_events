@@ -1,10 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/login.css";
 import { GoogleButton } from "react-google-button";
+import { createUserWithEmailAndPassword } from "@firebase/auth";
+import { auth } from "./config";
 import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
   const { googleSignIn, user } = UserAuth();
   const navigate = useNavigate();
 
@@ -14,6 +20,19 @@ function Login() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        setError(true);
+      });
   };
 
   useEffect(() => {
@@ -30,10 +49,26 @@ function Login() {
       <div className="social_button">
         <div className="inputs">
           <h2 className="title">Login</h2>
-          <div className="logform">
-          <div id="google_icon">
-              <GoogleButton onClick={handleGoogleSignIn} />
+          <form onSubmit={handleLogin}>
+            <div className="logform">
+              <input
+                type="email"
+                id="input_email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                id="input_password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button type="submit" className="logbtn">Login</button>
+              { error && <span>Wrong email or password</span> }
             </div>
+          </form>
+          <div id="google_icon">
+            <GoogleButton onClick={handleGoogleSignIn} />
           </div>
         </div>
       </div>

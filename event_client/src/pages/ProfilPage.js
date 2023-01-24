@@ -10,11 +10,17 @@ function ProfilPage() {
     <div className="main_profil">
       <div className="profil_container">
         <div className="avatar_container">
-          <img
+          {
+            user !== 0 ? (
+              <img
             src={user.photoURL}
-            alt="default avatar"
+            alt=""
             className="avatar"
           />
+            ) : (
+              <img src="img/avatar_01.webp" />
+            )
+          }
         </div>
 
         <div className="informations_container">

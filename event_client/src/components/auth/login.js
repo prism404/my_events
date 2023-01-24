@@ -1,26 +1,26 @@
 import React, { useEffect } from "react";
 import "../../styles/login.css";
 import { GoogleButton } from "react-google-button";
-import { UserAuth } from "../../context/AuthContext"; 
+import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router";
 
 function LoginWithFirebase() {
-    const { googleSignIn, user } = UserAuth();
-    const navigate = useNavigate();
+  const { googleSignIn, user } = UserAuth();
+  const navigate = useNavigate();
 
-    const handleGoogleSignIn = async () => {
-        try {
-            await googleSignIn();
-        } catch (error) {
-            console.log(error);
-        }
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    useEffect(() => {
-        if (user != null) {
-          navigate('/profil');
-        }
-      }, [user]);
+  useEffect(() => {
+    if (user != null) {
+      navigate("/profil");
+    }
+  }, [user]);
 
   return (
     <div>
