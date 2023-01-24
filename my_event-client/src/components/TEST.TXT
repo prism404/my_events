@@ -1,0 +1,57 @@
+{/* <Box className='search'>
+        <Autocomplete
+          freeSolo
+          options={events}
+          sx={{ width: 300 }}
+          getOptionLabel={(results) => results.fields.title_fr}
+          noOptionsText={"Sorry, but I couldn't find anything..."}
+          onChange={(e, v) => setSearch(v)}
+      
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              variant="standard"
+              label="Evenement"
+              placeholder='Evenement'
+              className="rounded-full"
+            />
+          )}
+        />
+        <Autocomplete
+          freeSolo
+          options={events}
+          sx={{ width: 300 }}
+          getOptionLabel={(results) => results.fields.keywords_fr}
+          noOptionsText={"Sorry, but I couldn't find anything..."}
+          onChange={(e, v) => setSearch(v)}
+      
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              variant="standard"
+              label="Type d'evenement"
+              placeholder='Type'
+              className="rounded-full"
+            />
+          )}
+        />
+        <Autocomplete
+          freeSolo
+          options={events}
+          sx={{ width: 300 }}
+          getOptionLabel={(results) => results.fields.location_region}
+          noOptionsText={"Sorry, but I couldn't find anything..."}
+          onChange={(e, v) => setSearch(v)}
+          onKeyDown={handleSearch}
+      
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              variant="standard"
+              label="Region"
+              placeholder="Lieu de l'evenement"
+              className="rounded-full"
+            />
+          )}
+        />
+      </Box> */}
